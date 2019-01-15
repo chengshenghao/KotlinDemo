@@ -27,9 +27,12 @@ class MainActivity : AppCompatActivity() {
         //局部变量
         val c: Int// 如果没有初始值类型不能省略
         c = 3 // 明确赋值
+
         //可重新赋值的变量使用 var 关键字：
         var x = 5 // 自动推断出 `Int` 类型
         x += 1
+
+        stringModel()
     }
 
     // 定义函数
@@ -66,6 +69,15 @@ class MainActivity : AppCompatActivity() {
     var x = 0
     fun incrementX() {
         x += 1
+    }
+
+    /**
+     * 字符串模板(字符串可以包含模板表达式 ，即一些小段代码，会求值并把结果合并到字符串中。
+     * 模板表达式以美元符（$）开头，由一个简单的名字构成:)
+     */
+    fun stringModel(){
+        val i = 2;
+        Log.i("csh","i=$i");
     }
 
 }
