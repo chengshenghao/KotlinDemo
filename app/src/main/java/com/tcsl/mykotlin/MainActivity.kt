@@ -41,6 +41,8 @@ class MainActivity : AppCompatActivity() {
         Log.i(TAG, "" + getStringLength("我是字符串"));
 
         forsss();
+
+        inUse();
     }
 
     // 定义函数
@@ -143,7 +145,19 @@ class MainActivity : AppCompatActivity() {
      */
     fun forsss() {
         for (item in items) {
-            println(item)
+            Log.i(TAG,item)
         }
     }
+
+    val m = 10
+    val n = 9
+    /**
+     * 使用 in 运算符来检测某个数字是否在指定区间内
+     */
+    fun inUse() {
+        if (m in 1..n + 2) {
+            Log.i(TAG,"fits in range")
+        }
+    }
+
 }
