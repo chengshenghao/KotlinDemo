@@ -33,6 +33,8 @@ class MainActivity : AppCompatActivity() {
         x += 1
 
         stringModel()
+
+        Log.i(TAG, "" + maxOf(a, b))
     }
 
     // 定义函数
@@ -75,9 +77,26 @@ class MainActivity : AppCompatActivity() {
      * 字符串模板(字符串可以包含模板表达式 ，即一些小段代码，会求值并把结果合并到字符串中。
      * 模板表达式以美元符（$）开头，由一个简单的名字构成:)
      */
-    fun stringModel(){
+    fun stringModel() {
         val i = 2;
-        Log.i("csh","i=$i");
+        Log.i("csh", "i=$i");
     }
+
+    /**
+     * 使用条件表达式
+     * 求a、b最大值
+     */
+    fun maxOf(a: Int, b: Int): Int {
+        if (a > b) {
+            return a;
+        } else {
+            return b;
+        }
+    }
+
+    /**
+     * 用if作为表达式
+     */
+    fun maxOf2(a: Int, b: Int) = if (a > b) a else b;
 
 }
