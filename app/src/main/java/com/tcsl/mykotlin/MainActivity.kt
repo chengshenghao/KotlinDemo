@@ -35,6 +35,10 @@ class MainActivity : AppCompatActivity() {
         stringModel()
 
         Log.i(TAG, "" + maxOf(a, b))
+
+        printProduct("" + 1, "3");
+
+        Log.i(TAG,""+getStringLength("我是字符串"));
     }
 
     // 定义函数
@@ -98,5 +102,36 @@ class MainActivity : AppCompatActivity() {
      * 用if作为表达式
      */
     fun maxOf2(a: Int, b: Int) = if (a > b) a else b;
+
+    /**
+     * 使用可空值及null检测
+     */
+    fun parseInt(str: String): Int? {
+        return Integer.parseInt(str);
+    }
+
+    fun printProduct(arg1: String, arg2: String) {
+        val x = parseInt(arg1)
+        val y = parseInt(arg2)
+
+        // 直接使用 `x * y` 会导致编译错误，因为他们可能为 null
+        if (x != null && y != null) {
+            // 在空检测后，x 与 y 会自动转换为非空值（non-nullable）
+            Log.i(TAG, "" + x * y)
+        } else {
+            println("either '$arg1' or '$arg2' is not a number")
+        }
+    }
+
+    /**
+     * 使用类型检测及自动类型转换
+     * is 运算符检测一个表达式是否某类型的一个实例。 如果一个不可变的局部变量或属性已经判断出为某类型，
+     * 那么检测后的分支中可以直接当作该类型使用，无需显式转换：
+     */
+    fun getStringLength(obj: Any): Int? {
+        if (obj !is String) return null
+        // `obj` 在这一分支自动转换为 `String`
+        return obj.length
+    }
 
 }
