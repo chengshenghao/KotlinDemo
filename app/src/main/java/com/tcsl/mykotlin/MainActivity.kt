@@ -38,7 +38,9 @@ class MainActivity : AppCompatActivity() {
 
         printProduct("" + 1, "3");
 
-        Log.i(TAG,""+getStringLength("我是字符串"));
+        Log.i(TAG, "" + getStringLength("我是字符串"));
+
+        forsss();
     }
 
     // 定义函数
@@ -134,4 +136,14 @@ class MainActivity : AppCompatActivity() {
         return obj.length
     }
 
+
+    val items = listOf("apple", "banana", "kiwifruit")
+    /**
+     * 使用for循环
+     */
+    fun forsss() {
+        for (item in items) {
+            println(item)
+        }
+    }
 }
