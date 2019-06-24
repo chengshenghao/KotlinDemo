@@ -35,13 +35,12 @@ class MainActivity : AppCompatActivity() {
         Log.i(TAG, "" + maxOf(a, b))
 
         printProduct("" + 1, "3");
-
         Log.i(TAG, "" + getStringLength("我是字符串"));
-
         forsss();
-
         inUse();
         getfruit()
+        var person = Person("xiaoming");
+        var cs = Constructors(1)
     }
 
     // 定义函数
@@ -60,9 +59,10 @@ class MainActivity : AppCompatActivity() {
     /**
      * 函数返回无意义的值
      */
-    fun printSum(a: Int,b: Int):Unit{
-        println("sum a and b is ${a+b}")
+    fun printSum(a: Int, b: Int): Unit {
+        println("sum a and b is ${a + b}")
     }
+
     /**
      * Unit可以省略
      */
@@ -145,8 +145,8 @@ class MainActivity : AppCompatActivity() {
 //        for (item in items){
 //            Log.d("for循环",item)
 //        }
-        for (index in items.indices){
-            Log.d("for循环",items[index])
+        for (index in items.indices) {
+            Log.d("for循环", items[index])
         }
 
     }
@@ -162,13 +162,13 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    val fruits = listOf("banana", "avocado", "apple")
     /**
      * 集合的使用
      */
-    val fruits = listOf("banana", "avocado", "apple")
-    fun getfruit(){
-        for (fruit in fruits){
-            Log.d(TAG,fruit)
+    fun getfruit() {
+        for (fruit in fruits) {
+            Log.d(TAG, fruit)
         }
 
         when {
@@ -182,5 +182,78 @@ class MainActivity : AppCompatActivity() {
                 .forEach { println(it) }
     }
 
+    /**
+     * 使用类
+     * 如果主构造函数没有任何注解或者可见性修饰符，可以省略这个 constructor 关键字。
+     */
+    class Person constructor(firstname: String) {
+        //主构造的参数可以在初始化块中使用。它们也可以在类体内声明的属性初始化器中使用
+        var firstProperty = firstname.toUpperCase();
 
+        //主构造函数不能包含任何的代码。初始化的代码可以放到以 init 关键字作为前缀的初始化块（initializer blocks）中。
+        init {
+            println(firstname)
+            println(firstProperty)
+        }
+    }
+
+    /**
+     * 次构造函数
+     * 初始化块中的代码实际上会成为主构造函数的一部分。委托给主构造函数会作为次构造函数的第一条语句，
+     * 因此所有初始化块中的代码都会在次构造函数体之前执行。即使该类没有主构造函数，这种委托仍会隐式发生，并且仍会执行初始化块
+     */
+    class Constructors {
+        constructor(i: Int) {
+            println("Constructor")
+        }
+
+        init {
+            println("Init block")
+        }
+    }
+
+    /**
+     * 继承
+     */
+    open class Base(p: Int)
+
+    //要声明一个显式的超类型，我们把类型放到类头的冒号之后：
+    class Dervice(p: Int) : Base(p)
+
+    /**
+     * 覆盖方法
+     * 与 Java 不同，Kotlin 对于可覆盖的成员（我们称之为开放）以及覆盖后的成员需要显式修饰符：
+     */
+    open class MyBase() {
+        open fun getDervice() {}
+    }
+
+    class MyDervice(p: Int) : MyBase() {
+        override fun getDervice() {}
+    }
+
+    /**
+     * 覆盖属性
+     * 你也可以用一个 var 属性覆盖一个 val 属性，但反之则不行
+     */
+    open class Foo {
+        open val x: Int
+            get() {
+                return 2
+            }
+    }
+
+    class Bar1 : Foo() {
+        override val x: Int = 1
+    }
+    /**
+     * 抽象类
+     */
+    open class Base1 {
+        open fun f() {}
+    }
+
+    abstract class Derived : Base1() {
+        override abstract fun f()
+    }
 }
