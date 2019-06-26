@@ -5,6 +5,7 @@ package com.tcsl.mykotlin
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import com.tcsl.mykotlin.inter.Child
 
 class MainActivity : AppCompatActivity() {
     /*
@@ -41,6 +42,8 @@ class MainActivity : AppCompatActivity() {
         getfruit()
         var person = Person("xiaoming");
         var cs = Constructors(1)
+        var child = Child();
+        child.bar()
     }
 
     // 定义函数
@@ -256,4 +259,5 @@ class MainActivity : AppCompatActivity() {
     abstract class Derived : Base1() {
         override abstract fun f()
     }
+
 }
