@@ -44,6 +44,9 @@ class MainActivity : AppCompatActivity() {
         var cs = Constructors(1)
         var child = Child();
         child.bar()
+
+        var user = User("Runoob")
+        user.Print()
     }
 
     // 定义函数
@@ -62,7 +65,7 @@ class MainActivity : AppCompatActivity() {
     /**
      * 函数返回无意义的值
      */
-    fun printSum(a: Int, b: Int): Unit {
+    private fun printSum(a: Int, b: Int): Unit {
         println("sum a and b is ${a + b}")
     }
 
@@ -249,6 +252,7 @@ class MainActivity : AppCompatActivity() {
     class Bar1 : Foo() {
         override val x: Int = 1
     }
+
     /**
      * 抽象类
      */
@@ -258,6 +262,15 @@ class MainActivity : AppCompatActivity() {
 
     abstract class Derived : Base1() {
         override abstract fun f()
+    }
+
+    /**
+     * 扩展的使用
+     */
+    class User(var name: String)
+
+    fun User.Print() {
+        println("用户名 $name")
     }
 
 }
