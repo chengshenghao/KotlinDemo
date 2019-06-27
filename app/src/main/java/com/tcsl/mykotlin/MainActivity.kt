@@ -47,6 +47,8 @@ class MainActivity : AppCompatActivity() {
 
         var user = User("Runoob")
         user.Print()
+        MyClass.foo();
+        MyClass().fooo()
     }
 
     // 定义函数
