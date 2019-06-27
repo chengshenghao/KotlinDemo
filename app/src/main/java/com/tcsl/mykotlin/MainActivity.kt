@@ -5,6 +5,7 @@ package com.tcsl.mykotlin
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import com.tcsl.mykotlin.data.Users
 import com.tcsl.mykotlin.inter.Child
 
 class MainActivity : AppCompatActivity() {
@@ -49,6 +50,11 @@ class MainActivity : AppCompatActivity() {
         user.Print()
         MyClass.foo();
         MyClass().fooo()
+
+        val jack = Users(name = "Jack", age = 1)
+        val olderJack = jack.copy(age = 2)
+        println(jack)
+        println(olderJack)
     }
 
     // 定义函数
