@@ -5,9 +5,13 @@ package com.tcsl.mykotlin
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import com.tcsl.mykotlin.data.Compare
+import com.tcsl.mykotlin.data.PayRoll
+import com.tcsl.mykotlin.data.People
 import com.tcsl.mykotlin.data.Users
 import com.tcsl.mykotlin.inter.Child
 import com.tcsl.mykotlin.inter.Clickable
+import java.io.File
 
 class MainActivity : AppCompatActivity() {
     /*
@@ -58,6 +62,13 @@ class MainActivity : AppCompatActivity() {
         println(olderJack)
         println("12345-56.89.A".split("\\.|   - ".toRegex()))
         Button().onclick()
+        //Object
+        val people = People(12, "haha")
+        PayRoll.allEmployees.add(People(12, "xiaoli"))
+        PayRoll.allPeople()
+        val  i = Compare.compare(File("/USER"), File("/user"))
+        print(i)
+
     }
     // 定义函数
     /**

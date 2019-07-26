@@ -6,7 +6,7 @@ package com.tcsl.mykotlin.inter
  * <br/>创建时间：2019/6/24 13: 18
  */
 
-class Child : MyInterfaceTwo, MyInterface {
+class Child (): MyInterfaceTwo, MyInterface {
     override fun zoo() {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
