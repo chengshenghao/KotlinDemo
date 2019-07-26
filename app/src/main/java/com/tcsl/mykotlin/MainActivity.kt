@@ -7,6 +7,7 @@ import android.os.Bundle
 import android.util.Log
 import com.tcsl.mykotlin.data.Users
 import com.tcsl.mykotlin.inter.Child
+import com.tcsl.mykotlin.inter.Clickable
 
 class MainActivity : AppCompatActivity() {
     /*
@@ -55,8 +56,9 @@ class MainActivity : AppCompatActivity() {
         val olderJack = jack.copy(age = 2)
         println(jack)
         println(olderJack)
+        println("12345-56.89.A".split("\\.|   - ".toRegex()))
+        Button().onclick()
     }
-
     // 定义函数
     /**
      * 带有两个Int参数，返回Int函数
@@ -152,6 +154,7 @@ class MainActivity : AppCompatActivity() {
 
 
     val items = listOf("apple", "banana", "kiwifruit")
+
     /**
      * 使用for循环
      */
@@ -177,10 +180,12 @@ class MainActivity : AppCompatActivity() {
     }
 
     val fruits = listOf("banana", "avocado", "apple")
+    val arraylist = arrayListOf(1, 2, 3)
     /**
      * 集合的使用
      */
     fun getfruit() {
+        println(arraylist.javaClass)
         for (fruit in fruits) {
             Log.d(TAG, fruit)
         }
@@ -280,5 +285,6 @@ class MainActivity : AppCompatActivity() {
     fun User.Print() {
         println("用户名 $name")
     }
+
 
 }

@@ -6,15 +6,22 @@ package com.tcsl.mykotlin.inter
  * <br/>创建时间：2019/6/24 13: 18
  */
 
-class Child : MyInterfaceChild {
+class Child : MyInterfaceTwo, MyInterface {
+    override fun zoo() {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
+
+    override fun foo() {
+        super<MyInterface>.foo()
+        super<MyInterfaceTwo>.foo()
+    }
+
+
     override val prop: Int = 29
 
     override fun bar() {
         println("我是实现类")
     }
 
-    override fun child() {
-        TODO("MyInterfaceChild独有方法") //To change body of created functions use File | Settings | File Templates.
-    }
 
 }
