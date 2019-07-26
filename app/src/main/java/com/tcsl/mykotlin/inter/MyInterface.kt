@@ -1,7 +1,7 @@
 package com.tcsl.mykotlin.inter
 
 /**
- * 描述:
+ * 描述:Kotlin中接口和Java中的相似，但可以包含默认实现和属性
  * <p/>作者：csh
  * <br/>创建时间：2019/6/24 13: 16
  */
