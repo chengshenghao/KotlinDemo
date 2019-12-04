@@ -10,8 +10,14 @@ import com.tcsl.mykotlin.data.PayRoll
 import com.tcsl.mykotlin.data.People
 import com.tcsl.mykotlin.data.Users
 import com.tcsl.mykotlin.inter.Child
-import com.tcsl.mykotlin.inter.Clickable
 import java.io.File
+import android.animation.ValueAnimator
+import android.animation.Animator
+import android.animation.AnimatorListenerAdapter
+import android.animation.ObjectAnimator
+import android.widget.TextView
+import android.animation.AnimatorSet
+
 
 class MainActivity : AppCompatActivity() {
     /*
@@ -20,13 +26,22 @@ class MainActivity : AppCompatActivity() {
      * 局部变量:没有默认值。可以先定义再赋值。 使用之前必须赋值，否则报错）
      */
     val TAG = "csh"
-    val a: Int = 1//立即赋值
-    val b = 2//自动推断出为int类型
+    var a: Int = 1//立即赋值
 
+    init {
+        var e = 3
+    }
+
+    var b = 2//自动推断出为int类型
+    lateinit var tvAlpha: TextView;
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        a = b.also { b = a }
+
+        Log.i(TAG, "" + a)
+        Log.i(TAG, "" + b)
         Log.i(TAG, "" + sum(1, 2))
         Log.i(TAG, "" + sum2(1, 2))
         printSum(2, 3)
@@ -66,11 +81,69 @@ class MainActivity : AppCompatActivity() {
         val people = People(12, "haha")
         PayRoll.allEmployees.add(People(12, "xiaoli"))
         PayRoll.allPeople()
-        val  i = Compare.compare(File("/USER"), File("/user"))
+        val i = Compare.compare(File("/USER"), File("/user"))
         print(i)
-
+        foo()
+        tvAlpha = findViewById<TextView>(R.id.tv)
+        valueAnimatorMethord()
+//        objectAnimatorMethord()
+        anmationSetMethod()
     }
-    // 定义函数
+
+    /**
+     * ValueAnimator：包含了属性动画的核心功能，动画时间，开始和结束属性值计算方法等，这个类也是属性动画的基类。
+     */
+    private fun valueAnimatorMethord() {
+        val valueAnimator = ValueAnimator.ofFloat(0f, 10f)
+        valueAnimator.duration = 1000
+        valueAnimator.addListener(object : AnimatorListenerAdapter() {
+            override fun onAnimationEnd(animation: Animator) {
+                Log.e(TAG, "动画结束了")
+            }
+        })
+        valueAnimator.addUpdateListener { valueAnimator ->
+            val animatorValue = valueAnimator.animatedValue as Float
+            Log.e(TAG, "当前动画值是$animatorValue")
+        }
+        valueAnimator.start()
+    }
+
+    /**
+     * ObjectAnimator：继承自ValueAnimator，其实如果要改变一个事物的某个属性变化会比较经常用到这个方法。
+     */
+    private fun objectAnimatorMethord() {
+        val objectAnimator = ObjectAnimator.ofFloat(tvAlpha, "alpha", 1f, 0f, 1f)
+        objectAnimator.duration = 5000
+        objectAnimator.start()
+    }
+
+    /**
+     * AnimationSet：用于组合多个动画的，可以设置要组合动画的时序关系。
+     */
+    fun anmationSetMethod() {
+        val alphaAnimator = ObjectAnimator.ofFloat(tvAlpha, "alpha", 1f, 0f, 1f)
+        val rotationAnimator = ObjectAnimator.ofFloat(tvAlpha, "rotation", 0f, 360f)
+        val translateYAnimator = ObjectAnimator.ofFloat(tvAlpha, "translationY", 0f, 700f, 0f)
+        val animatorSet = AnimatorSet()
+        animatorSet.play(alphaAnimator).with(rotationAnimator).before(translateYAnimator)
+        animatorSet.addListener(object : AnimatorListenerAdapter() {
+            override fun onAnimationEnd(animation: Animator) {
+                Log.e(TAG, "动画结束了")
+            }
+        })
+        animatorSet.duration = 1000
+        animatorSet.start()
+    }
+
+    fun foo() {
+        listOf(1, 2, 3, 4, 5).forEach {
+            if (it == 3) return // 非局部直接返回到 foo() 的调用者
+            print(it)
+        }
+        println("this point is unreachable")
+    }
+
+// 定义函数
     /**
      * 带有两个Int参数，返回Int函数
      */
@@ -213,7 +286,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     /**
-     * 使用类
+     * 使用类`
      * 如果主构造函数没有任何注解或者可见性修饰符，可以省略这个 constructor 关键字。
      */
     class Person constructor(firstname: String) {
