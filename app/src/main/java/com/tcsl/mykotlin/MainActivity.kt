@@ -89,10 +89,10 @@ class MainActivity : AppCompatActivity() {
         valueAnimatorMethord()
 //        objectAnimatorMethord()
         anmationSetMethod()
-        var myBase = MyBase("")
         var str = String()
         val list = listOf("1","2","3")
-        println("使用默认参数"+Button().joinToString(list))
+        println("使用默认参数"+joinToString(list))
+        Buttons().clike()
     }
 
 

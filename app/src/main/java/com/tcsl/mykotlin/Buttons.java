@@ -5,6 +5,9 @@ import com.tcsl.mykotlin.inter.Clickbles;
 import java.util.ArrayList;
 import java.util.List;
 
+import static com.tcsl.mykotlin.StringFunctions.joinToString;
+
+
 /**
  * 描述:
  * <p/>作者：csh
@@ -14,11 +17,11 @@ import java.util.List;
 public class Buttons implements Clickbles {
     @Override
     public void clike() {
-        List<String>list = new ArrayList<>();
+        List<String> list = new ArrayList<>();
         list.add("1");
         list.add("2");
         list.add("3");
-        new Button().joinToString(list);
+        System.out.println("java使用顶层函数" + joinToString(list));
     }
 
 }
