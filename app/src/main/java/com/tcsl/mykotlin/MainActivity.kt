@@ -90,11 +90,11 @@ class MainActivity : AppCompatActivity() {
 //        objectAnimatorMethord()
         anmationSetMethod()
         var str = String()
-        val list = listOf("1","2","3")
-        println("使用默认参数"+joinToString(list))
+        val list = listOf("1", "2", "3")
+        println("使用默认参数" + joinToString(list))
         Buttons().clike()
+        println("扩展函数计算最后一个字符" + "woshi".lastChar())
     }
-
 
 
     /**
