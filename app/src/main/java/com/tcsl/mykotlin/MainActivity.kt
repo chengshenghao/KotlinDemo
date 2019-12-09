@@ -17,6 +17,7 @@ import android.animation.AnimatorListenerAdapter
 import android.animation.ObjectAnimator
 import android.widget.TextView
 import android.animation.AnimatorSet
+import com.tcsl.mykotlin.base.MyBase
 
 
 class MainActivity : AppCompatActivity() {
@@ -88,7 +89,13 @@ class MainActivity : AppCompatActivity() {
         valueAnimatorMethord()
 //        objectAnimatorMethord()
         anmationSetMethod()
+        var myBase = MyBase("")
+        var str = String()
+        val list = listOf("1","2","3")
+        println("使用默认参数"+Button().joinToString(list))
     }
+
+
 
     /**
      * ValueAnimator：包含了属性动画的核心功能，动画时间，开始和结束属性值计算方法等，这个类也是属性动画的基类。
@@ -327,11 +334,11 @@ class MainActivity : AppCompatActivity() {
      * 覆盖方法
      * 与 Java 不同，Kotlin 对于可覆盖的成员（我们称之为开放）以及覆盖后的成员需要显式修饰符：
      */
-    open class MyBase() {
+    open class MyBases() {
         open fun getDervice() {}
     }
 
-    class MyDervice(p: Int) : MyBase() {
+    class MyDervice(p: Int) : MyBases() {
         override fun getDervice() {}
     }
 
